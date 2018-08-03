@@ -39,8 +39,12 @@ public class Main {
                         }
                     }
                 }
+                int monsterHit = 3-homerun-hit;
                 if (homerun == 0 && hit == 0){
                     System.out.println("No hit.");
+                    System.out.println(p.getName() + " is damaged by " + 5*monsterHit + "points.");
+                    System.out.println(p.getName() + ":"+ p.getHp()+", "+ m.getName()+":" + m.getHp());
+
                 }else{
                     System.out.println(homerun + "home run, " + hit + "hit.");
                     for(int k=1; k<=homerun; k++){
@@ -49,7 +53,6 @@ public class Main {
                     for(int l=1; l<=hit; l++){
                         p.attack(m);
                     }
-                    int monsterHit = 3-homerun-hit;
                     for(int n=1; n<=monsterHit; n++){
                         m.attack(p);
                     }
@@ -68,10 +71,11 @@ public class Main {
     public static void welcomeMsg(){
         System.out.println("Number Game!");
         System.out.println("Rule: The answer is 3-digit number, and doesn't contain 0.");
-        System.out.println("      The number of each digit must be unique.");
-        System.out.println("      You(40hp) will fight with Monster(100hp).");
+        System.out.println("      Each of the digits must be unique.");
+        System.out.println("      You have 40hp,  Monster has 100hp.");
         System.out.println("      Homerun=10pt, Hit=5pt");
-        System.out.println("      if you can not hit, you were damaged by 5 pt.");
+        System.out.println("      You will attack the monster by 10pt for one homerun or 5pt for one hit.");
+        System.out.println("      If you can not hit, you will be damaged by 5 pt.");
     }
 
     public static int[] generateAns(){
