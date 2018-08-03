@@ -4,6 +4,10 @@ public class Main {
 
     public static void main(String[] args) {
         welcomeMsg();
+        System.out.println("Input your name.");
+        String name = new java.util.Scanner(System.in).nextLine();
+        Player p = new Player(name);
+        Monster m = new Monster();
         boolean duplicates=true;
         int[] ans = new int[3];
         while(duplicates){
@@ -31,6 +35,7 @@ public class Main {
                         }else if (i != j && ans[i] == inputArr[j]){
                             hit++;
                         }else {
+
                         }
                     }
                 }
@@ -38,6 +43,21 @@ public class Main {
                     System.out.println("No hit.");
                 }else{
                     System.out.println(homerun + "home run, " + hit + "hit.");
+                    for(int k=1; k<=homerun; k++){
+                        p.kick(m);
+                    }
+                    for(int l=1; l<=hit; l++){
+                        p.attack(m);
+                    }
+                    int monsterHit = 3-homerun-hit;
+                    for(int n=1; n<=monsterHit; n++){
+                        m.attack(p);
+                    }
+
+                    System.out.println(p.getName() + " attacked.");
+                    System.out.println(m.getName() + " is damaged by " + (10*homerun + 5*hit) + "points.");
+                    System.out.println(p.getName() + " is damaged by " + 5*monsterHit + "points.");
+                    System.out.println(p.getName() + ":"+ p.getHp()+", "+ m.getName()+":" + m.getHp());
                 }
             }
         }
@@ -48,7 +68,10 @@ public class Main {
     public static void welcomeMsg(){
         System.out.println("Number Game!");
         System.out.println("Rule: The answer is 3-digit number, and doesn't contain 0.");
-        System.out.println("The number of each digit must be unique.");
+        System.out.println("      The number of each digit must be unique.");
+        System.out.println("      You(40hp) will fight with Monster(100hp).");
+        System.out.println("      Homerun=10pt, Hit=5pt");
+        System.out.println("      if you can not hit, you were damaged by 5 pt.");
     }
 
     public static int[] generateAns(){

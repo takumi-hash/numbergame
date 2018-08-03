@@ -1,6 +1,6 @@
 public class Monster {
     private int hp = 100;
-    private final String name = "Takumi";
+    private final String name = "Monster";
 
     public int getHp(){
         return this.hp;
