@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 import static java.lang.System.out;
 
 public class Main {
@@ -12,23 +14,9 @@ public class Main {
             ans = generateAns();
             duplicates = duplicates(ans);
         }
-
         out.println("Input 3-digit number.");
-        //int input = new java.util.Scanner(System.in).nextInt();
         boolean isCorrect = false;
         while (!isCorrect){
-            /*
-            boolean validity = false;
-            while(!validity){
-                if (input < 100 || 999 < input) {
-                    out.println("Input 3-digit number.");
-                    input = new java.util.Scanner(System.in).nextInt();
-                } else {
-                    out.println("ok");
-                    validity = true;
-                }
-            }
-             */
             int input = new java.util.Scanner(System.in).nextInt();
             int[] inputArr = new int[3];
             inputArr[0] = input / 100;
@@ -61,6 +49,7 @@ public class Main {
             }
         }
         out.println("Game end");
+        out.println("The answer is" + Arrays.toString(ans));
     }
     public static int[] generateAns(){
         int[] ans = new int [3];
