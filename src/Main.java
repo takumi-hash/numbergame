@@ -1,20 +1,16 @@
 import java.util.Arrays;
 
-import static java.lang.System.out;
-
 public class Main {
 
     public static void main(String[] args) {
-        out.println("Number Game!");
-        out.println("Rule: The answer is 3-digit number, and doesn't contain 0.");
-        out.println("The number of each digit must be unique.");
+        welcomeMsg();
         boolean duplicates=true;
         int[] ans = new int[3];
         while(duplicates){
             ans = generateAns();
             duplicates = duplicates(ans);
         }
-        out.println("Input 3-digit number.");
+        System.out.println("Input 3-digit number.");
         boolean isCorrect = false;
         while (!isCorrect){
             int input = new java.util.Scanner(System.in).nextInt();
@@ -31,26 +27,30 @@ public class Main {
                 for (int i=0; i<3; i++){
                     for (int j=0; j<3; j++){
                         if (i == j && ans[i] == inputArr[j]){
-                            //out.println("ans[" + i + "]: " + ans[i] + "inputArr[" + j + "]: " + inputArr[j] + ": Home run!");
                             homerun++;
                         }else if (i != j && ans[i] == inputArr[j]){
-                            //out.println("ans[" + i + "]: " + ans[i] + "inputArr[" + j + "]: " + inputArr[j] + ": Hit!");
                             hit++;
                         }else {
-                            //out.println("No hit");
                         }
                     }
                 }
                 if (homerun == 0 && hit == 0){
-                    out.println("No hit.");
+                    System.out.println("No hit.");
                 }else{
-                    out.println(homerun + "home run, " + hit + "hit.");
+                    System.out.println(homerun + "home run, " + hit + "hit.");
                 }
             }
         }
-        out.println("Game end");
-        out.println("The answer is" + Arrays.toString(ans));
+        System.out.println("Game end");
+        System.out.println("The answer is" + Arrays.toString(ans));
     }
+
+    public static void welcomeMsg(){
+        System.out.println("Number Game!");
+        System.out.println("Rule: The answer is 3-digit number, and doesn't contain 0.");
+        System.out.println("The number of each digit must be unique.");
+    }
+
     public static int[] generateAns(){
         int[] ans = new int [3];
         for (int i =0; i<3; i++){
